@@ -40,16 +40,7 @@ RE2::Options::Options(RE2::CannedOptions opt)
   : encoding_(opt == RE2::Latin1 ? EncodingLatin1 : EncodingUTF8),
     posix_syntax_(opt == RE2::POSIX),
     longest_match_(opt == RE2::POSIX),
-    log_errors_(opt != RE2::Quiet),
-    max_mem_(kDefaultMaxMem),
-    literal_(false),
-    never_nl_(false),
-    dot_nl_(false),
-    never_capture_(false),
-    case_sensitive_(true),
-    perl_classes_(false),
-    word_boundary_(false),
-    one_line_(false) {
+    log_errors_(opt != RE2::Quiet) {
 }
 
 // static empty objects for use as const references.
