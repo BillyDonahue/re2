@@ -171,7 +171,7 @@ void RE2::Init(const StringPiece& pattern, const Options& options) {
   });
 
   pattern_ = pattern.as_string();
-  options_.Copy(options);
+  options_ = options;
   entire_regexp_ = NULL;
   suffix_regexp_ = NULL;
   prog_ = NULL;
