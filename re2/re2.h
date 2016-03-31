@@ -554,21 +554,7 @@ class RE2 {
       EncodingLatin1
     };
 
-    Options() :
-      encoding_(EncodingUTF8),
-      posix_syntax_(false),
-      longest_match_(false),
-      log_errors_(true),
-      max_mem_(kDefaultMaxMem),
-      literal_(false),
-      never_nl_(false),
-      dot_nl_(false),
-      never_capture_(false),
-      case_sensitive_(true),
-      perl_classes_(false),
-      word_boundary_(false),
-      one_line_(false) {
-    }
+    Options() {}
 
     /*implicit*/ Options(CannedOptions);
 
@@ -622,42 +608,24 @@ class RE2 {
     bool one_line() const { return one_line_; }
     void set_one_line(bool b) { one_line_ = b; }
 
-    void Copy(const Options& src) {
-      encoding_ = src.encoding_;
-      posix_syntax_ = src.posix_syntax_;
-      longest_match_ = src.longest_match_;
-      log_errors_ = src.log_errors_;
-      max_mem_ = src.max_mem_;
-      literal_ = src.literal_;
-      never_nl_ = src.never_nl_;
-      dot_nl_ = src.dot_nl_;
-      never_capture_ = src.never_capture_;
-      case_sensitive_ = src.case_sensitive_;
-      perl_classes_ = src.perl_classes_;
-      word_boundary_ = src.word_boundary_;
-      one_line_ = src.one_line_;
-    }
+    void Copy(const Options& src) { *this = src; }
 
     int ParseFlags() const;
 
    private:
-    Encoding encoding_;
-    bool posix_syntax_;
-    bool longest_match_;
-    bool log_errors_;
-    int64_t max_mem_;
-    bool literal_;
-    bool never_nl_;
-    bool dot_nl_;
-    bool never_capture_;
-    bool case_sensitive_;
-    bool perl_classes_;
-    bool word_boundary_;
-    bool one_line_;
-
-    //DISALLOW_COPY_AND_ASSIGN(Options);
-    Options(const Options&);
-    void operator=(const Options&);
+    Encoding encoding_ = EncodingUTF8;
+    bool posix_syntax_ = false;
+    bool longest_match_ = false;
+    bool log_errors_ = true;
+    int64_t max_mem_ = kDefaultMaxMem;
+    bool literal_ = false;
+    bool never_nl_ = false;
+    bool dot_nl_ = false;
+    bool never_capture_ = false;
+    bool case_sensitive_ = true;
+    bool perl_classes_ = false;
+    bool word_boundary_ = false;
+    bool one_line_ = false;
   };
 
   // Returns the options set in the constructor.
